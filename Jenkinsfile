@@ -13,14 +13,14 @@ node('php'){
     }
     
     stage('config') {
-        parallel{
+        parallel (
             'config cache': {
                 sh 'php artisan config:cache'
             },
             'config route': {
                 sh 'php artisan'
             }
-        }
+        )
     }
     
     stage('Docker Build') {
